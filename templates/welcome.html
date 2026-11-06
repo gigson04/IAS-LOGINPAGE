@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Welcome — Gigs</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+
+    <script src="{{ url_for('static', filename='js/confetti.js') }}"
+            defer></script>
+</head>
+
+<body>
+
+    <canvas id="confetti-canvas" aria-hidden="true"></canvas>
+
+    <main class="welcome-container">
+
+        <div class="brand">
+            <span class="brand-mark">g.</span>
+            <span class="brand-name">Gigs / DASHBOARD</span>
+        </div>
+
+        <section class="welcome-content">
+
+            <span class="eyebrow">AUTHENTICATION SUCCESSFUL</span>
+
+            <div class="success-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none">
+                    <path
+                        d="M5 12.5L10 17L19 7"
+                        stroke="currentColor"
+                        stroke-width="1.8"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                    />
+                </svg>
+            </div>
+
+            <h1>Welcome, <span>{{ username }}</span>.</h1>
+
+            <p>
+                You have successfully signed in.
+                It's good to have you here.
+            </p>
+
+            <div class="welcome-meta">
+                <span>ACCOUNT STATUS</span>
+                <span class="status">
+                    <span class="status-dot"></span>
+                    AUTHENTICATED
+                </span>
+            </div>
+
+            <form method="POST" action="{{ url_for('logout') }}">
+                <input type="hidden" name="csrf_token"
+                       value="{{ csrf_token() }}">
+
+                <button type="submit" class="logout-button">
+                    Sign out <span aria-hidden="true">↗</span>
+                </button>
+            </form>
+
+        </section>
+
+        <footer class="welcome-footer">
+            <span>GIGS AUTHENTICATION SYSTEM</span>
+            <span>SESSION ACTIVE</span>
+        </footer>
+
+    </main>
+
+</body>
+</html>

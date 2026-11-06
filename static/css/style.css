@@ -1,0 +1,353 @@
+@import url('https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&family=Geist+Mono:wght@400;500&display=swap');
+
+:root {
+    --background: #f7f7f5;
+    --surface: #ffffff;
+    --foreground: #171717;
+    --muted: #777777;
+    --border: #e8e8e6;
+    --soft: #f0f0ee;
+    --success: #287b4c;
+    --danger: #b42318;
+
+    --font-main: 'Geist', sans-serif;
+    --font-mono: 'Geist Mono', monospace;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    background: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-main);
+    -webkit-font-smoothing: antialiased;
+}
+
+button,
+input {
+    font: inherit;
+}
+
+.auth-container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 24px;
+}
+
+.auth-card {
+    width: 100%;
+    max-width: 420px;
+    padding: 40px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.035);
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.brand-mark {
+    width: 36px;
+    height: 36px;
+    display: grid;
+    place-items: center;
+    background: #171717;
+    color: white;
+    font-size: 22px;
+    font-weight: 700;
+    border-radius: 8px;
+}
+
+.brand-name {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 1.2px;
+    font-weight: 500;
+}
+
+.heading {
+    margin-top: 48px;
+    margin-bottom: 32px;
+}
+
+.eyebrow {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 1.3px;
+    color: var(--muted);
+}
+
+.heading h1 {
+    margin-top: 14px;
+    font-size: 36px;
+    letter-spacing: -1.8px;
+    font-weight: 600;
+}
+
+.heading p,
+.welcome-content > p {
+    margin-top: 12px;
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+.form-group {
+    margin-bottom: 24px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 10px;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 1px;
+    font-weight: 500;
+}
+
+.label-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.field-note {
+    font-family: var(--font-mono);
+    color: #999;
+    font-size: 9px;
+}
+
+.form-group input {
+    width: 100%;
+    height: 48px;
+    padding: 0 14px;
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 7px;
+    outline: none;
+    color: var(--foreground);
+    font-size: 13px;
+    transition: border-color 180ms ease, box-shadow 180ms ease;
+}
+
+.form-group input::placeholder {
+    color: #aaa;
+}
+
+.form-group input:focus {
+    border-color: #333;
+    box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.06);
+}
+
+.submit-button,
+.logout-button {
+    width: 100%;
+    height: 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 16px;
+    border: 1px solid #171717;
+    border-radius: 7px;
+    background: #171717;
+    color: white;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 500;
+    transition: background 180ms ease, color 180ms ease;
+}
+
+.submit-button:hover,
+.logout-button:hover {
+    background: #383838;
+}
+
+.submit-button:focus-visible,
+.logout-button:focus-visible {
+    outline: 3px solid #999;
+    outline-offset: 3px;
+}
+
+.divider {
+    height: 1px;
+    background: var(--border);
+    margin: 32px 0 20px;
+}
+
+.auth-footer,
+.welcome-footer {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    font-family: var(--font-mono);
+    font-size: 8px;
+    letter-spacing: .5px;
+    color: #999;
+}
+
+.copyright {
+    margin-top: 24px;
+    font-family: var(--font-mono);
+    font-size: 9px;
+    color: #999;
+    letter-spacing: 1px;
+}
+
+/* Alerts */
+
+.alert {
+    padding: 12px 14px;
+    margin-bottom: 20px;
+    border-radius: 7px;
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+.alert.error {
+    color: var(--danger);
+    background: #fff1f0;
+    border: 1px solid #f5ceca;
+}
+
+.alert.success {
+    color: var(--success);
+    background: #edf8f0;
+    border: 1px solid #c9e8d1;
+}
+
+/* Welcome page */
+
+.welcome-container {
+    min-height: 100vh;
+    max-width: 1000px;
+    margin: auto;
+    padding: 36px 32px;
+    display: flex;
+    flex-direction: column;
+}
+
+.welcome-content {
+    width: 100%;
+    max-width: 520px;
+    margin: auto;
+    padding: 70px 0;
+}
+
+.success-icon {
+    width: 56px;
+    height: 56px;
+    display: grid;
+    place-items: center;
+    margin: 28px 0;
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    background: white;
+}
+
+.success-icon svg {
+    width: 26px;
+    height: 26px;
+    color: var(--success);
+}
+
+.welcome-content h1 {
+    font-size: clamp(32px, 6vw, 54px);
+    letter-spacing: -2.5px;
+    line-height: 1.15;
+    font-weight: 600;
+}
+
+.welcome-content h1 span {
+    font-weight: 400;
+}
+
+.welcome-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 42px 0 28px;
+    padding: 18px 0;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: .5px;
+}
+
+.status {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--success);
+}
+
+.status-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--success);
+}
+
+.logout-button {
+    max-width: 150px;
+}
+
+.welcome-footer {
+    margin-top: auto;
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+}
+
+/* Confetti */
+
+#confetti-canvas {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 10;
+}
+
+/* Responsive */
+
+@media (max-width: 480px) {
+    .auth-card {
+        padding: 28px 22px;
+    }
+
+    .heading h1 {
+        font-size: 31px;
+    }
+
+    .welcome-container {
+        padding: 24px;
+    }
+
+    .auth-footer,
+    .welcome-footer {
+        font-size: 7px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+    }
+}
