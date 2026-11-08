@@ -143,6 +143,52 @@ def login():
     return render_template("login.html")
 
 
+@app.route("/register", methods=["GET", "POST"])
+@limiter.limit("5 per minute", methods=["POST"])
+def register():
+
+    if "user_id" in session:
+        return redirect(url_for("welcome"))
+
+    if request.method == "POST":
+        username = request.form.get("username", "").strip()
+        password = request.form.get("password", "")
+        confirm_password = request.form.get("confirm_password", "")
+
+        if not re.fullmatch(r"[A-Za-z0-9_.-]{3,80}", username):
+            flash(
+                "Username must be 3-80 characters and use letters, "
+                "numbers, dots, underscores or hyphens.",
+                "error",
+            )
+            return render_template("register.html"), 400
+
+        if len(password) < 12 or len(password) > 1024:
+            flash("Password must be between 12 and 1024 characters.", "error")
+            return render_template("register.html"), 400
+
+        if password != confirm_password:
+            flash("Passwords do not match.", "error")
+            return render_template("register.html"), 400
+
+        password_hash = generate_password_hash(password, method="scrypt")
+
+        try:
+            with get_db() as db:
+                db.execute(
+                    "INSERT INTO users (username, password_hash) VALUES (?, ?)",
+                    (username, password_hash),
+                )
+        except sqlite3.IntegrityError:
+            flash("That username is already in use.", "error")
+            return render_template("register.html"), 409
+
+        flash("Your account has been created. You can now log in.", "success")
+        return redirect(url_for("login"))
+
+    return render_template("register.html")
+
+
 @app.route("/welcome")
 @login_required
 def welcome():

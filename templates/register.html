@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" type="image/svg+xml"
+          href="{{ url_for('static', filename='favicon.svg') }}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create account — Gigs</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <main class="auth-container">
+        <section class="auth-card">
+            <div class="brand">
+                <span class="brand-mark">g.</span>
+                <span class="brand-name">Gigs / ACCESS</span>
+            </div>
+
+            <div class="heading">
+                <span class="eyebrow">CREATE YOUR ACCOUNT</span>
+                <h1>Get started.</h1>
+                <p>Choose a username and password to create your account.</p>
+            </div>
+
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% for category, message in messages %}
+                    <div class="alert {{ category }}" role="alert">{{ message }}</div>
+                {% endfor %}
+            {% endwith %}
+
+            <form method="POST" action="{{ url_for('register') }}">
+                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+
+                <div class="form-group">
+                    <label for="username">USERNAME</label>
+                    <input type="text" id="username" name="username"
+                           placeholder="Choose a username" autocomplete="username"
+                           minlength="3" maxlength="80" pattern="[A-Za-z0-9_.-]{3,80}"
+                           title="Use 3-80 letters, numbers, dots, underscores or hyphens."
+                           required autofocus>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">PASSWORD</label>
+                    <input type="password" id="password" name="password"
+                           placeholder="At least 12 characters" autocomplete="new-password"
+                           minlength="12" maxlength="1024" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="confirm_password">CONFIRM PASSWORD</label>
+                    <input type="password" id="confirm_password" name="confirm_password"
+                           placeholder="Enter your password again" autocomplete="new-password"
+                           minlength="12" maxlength="1024" required>
+                </div>
+
+                <button type="submit" class="submit-button">
+                    <span>Create account</span>
+                    <span aria-hidden="true">↗</span>
+                </button>
+            </form>
+
+            <p class="account-prompt">
+                Already have an account? <a href="{{ url_for('login') }}">Log in</a>
+            </p>
+
+            <div class="divider"></div>
+            <footer class="auth-footer">
+                <span>GIGS AUTHENTICATION SYSTEM</span>
+                <span>SECURE ACCESS / 02</span>
+            </footer>
+        </section>
+
+        <p class="copyright">CREATED BY: GIGSON AQUINO</p>
+    </main>
+</body>
+</html>

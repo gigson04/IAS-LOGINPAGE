@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="icon" type="image/svg+xml"
+          href="{{ url_for('static', filename='favicon.svg') }}">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Sign in — Bryl</title>
+    <title>Sign in</title>
 
     <link rel="stylesheet"
           href="{{ url_for('static', filename='css/style.css') }}">
@@ -86,6 +88,10 @@
                 </button>
 
             </form>
+
+            <p class="account-prompt">
+                New here? <a href="{{ url_for('register') }}">Create an account</a>
+            </p>
 
             <div class="divider"></div>
 
