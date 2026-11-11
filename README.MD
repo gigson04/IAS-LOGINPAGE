@@ -41,80 +41,29 @@ IAS-LOGINPAGE/
 
 ## Requirements
 
-- macOS
-- Python 3
-- Visual Studio Code (recommended)
-- Terminal
+- Python 3.9 or newer
+- Internet access the first time you run the launcher, to install dependencies
 
-Check your Python installation:
+## Run on macOS or Windows
 
-```bash
-python3 --version
-```
+Open a terminal in the project folder and run the same launcher. It creates a
+`.venv`, installs dependencies when needed, generates a Flask secret key, and
+starts the development server.
 
-## Installation
-
-### 1. Open the project folder
+macOS:
 
 ```bash
-cd "/Users/gigsonaquino/Downloads/Documents/THIRD YR SUBJECTS/ASSURANCE AND SECURITY/IAS-LOGINPAGE"
+python3 run.py
 ```
 
-### 2. Create a virtual environment
+Windows PowerShell or Command Prompt:
 
-Only required during initial setup:
-
-```bash
-python3 -m venv .venv
+```powershell
+py -3 run.py
 ```
 
-### 3. Activate the virtual environment
-
-```bash
-source .venv/bin/activate
-```
-
-### 4. Install dependencies
-
-```bash
-python3 -m pip install -r login/requirements.txt
-```
-
-## Running the Application
-
-### Option 1: Using the startup script
-
-Make the script executable once:
-
-```bash
-chmod +x start.sh
-```
-
-Start the application:
-
-```bash
-./start.sh
-```
-
-### Option 2: Manually
-
-Activate your virtual environment:
-
-```bash
-source .venv/bin/activate
-```
-
-Generate a Flask secret key if you are starting a new terminal session:
-
-```bash
-export FLASK_SECRET_KEY="$(python3 -c 'import secrets; print(secrets.token_urlsafe(48))')"
-```
-
-Run Flask:
-
-```bash
-python3 -m flask --app login.app run --debug
-```
+Then open <http://127.0.0.1:5000>. Keep the terminal open while using the app;
+press `Ctrl+C` to stop it. The virtual environment is reused on later runs.
 
 ## Access the Application
 
